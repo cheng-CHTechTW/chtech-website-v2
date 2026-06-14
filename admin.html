@@ -2,11 +2,11 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-  <title>CHTech 管理中心 V2</title>
+  <title>誠創科技管理中心 V3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <h1>誠創科技管理中心 V2</h1>
+  <h1>誠創科技管理中心 V3</h1>
 
   <div id="loginBox">
     <input id="email" type="email" placeholder="管理員 Email">
@@ -17,12 +17,45 @@
   <div id="panelBox" style="display:none;">
     <p id="loginStatus"></p>
 
-    <button id="initBtn">初始化 Firebase 資料</button>
+    <button data-tab="dashboard">儀表板</button>
+    <button data-tab="company">公司資料</button>
+    <button data-tab="services">服務管理</button>
+    <button data-tab="forms">表單設定</button>
     <button id="logoutBtn">登出</button>
+
+    <hr>
+
+    <section id="dashboardPage">
+      <h2>儀表板</h2>
+      <p>Firebase 已連線，後台 V3 已啟用。</p>
+    </section>
+
+    <section id="companyPage" style="display:none;">
+      <h2>公司資料</h2>
+      <input id="companyName" placeholder="公司名稱"><br>
+      <input id="phone" placeholder="電話"><br>
+      <input id="emailContact" placeholder="Email"><br>
+      <input id="lineID" placeholder="LINE 名稱"><br>
+      <input id="website" placeholder="網站"><br>
+      <input id="address" placeholder="地址"><br>
+      <textarea id="description" placeholder="公司簡介"></textarea><br>
+      <button id="saveCompanyBtn">儲存公司資料</button>
+    </section>
+
+    <section id="servicesPage" style="display:none;">
+      <h2>服務管理</h2>
+      <button id="loadServicesBtn">讀取服務</button>
+      <div id="servicesList"></div>
+    </section>
+
+    <section id="formsPage" style="display:none;">
+      <h2>表單設定</h2>
+      <p>目前表單欄位已建立：聯絡人、電話、店名、營業地區、LINE名稱、需求、聯繫時間、備註。</p>
+    </section>
 
     <pre id="resultBox"></pre>
   </div>
 
-  <script type="module" src="assets/js/admin.js"></script>
+  <script type="module" src="./assets/js/admin.js"></script>
 </body>
 </html>
