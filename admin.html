@@ -4,47 +4,24 @@
   <meta charset="utf-8">
   <title>CHTech 管理中心 V2</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="資產/css/admin.css">
 </head>
 <body>
-  <main id="adminApp">
-    <section class="admin-card">
-      <h1>誠創科技管理中心 V2</h1>
+  <h1>誠創科技管理中心 V2</h1>
 
-      <div id="loginBox">
-        <input id="email" type="email" placeholder="管理員 Email">
-        <input id="password" type="password" placeholder="密碼">
-        <button id="loginBtn">登入</button>
-      </div>
+  <div id="loginBox">
+    <input id="email" type="email" placeholder="管理員 Email">
+    <input id="password" type="password" placeholder="密碼">
+    <button id="loginBtn">登入</button>
+  </div>
 
-      <div id="panelBox" style="display:none;">
-        <p id="loginStatus"></p>
+  <div id="panelBox" style="display:none;">
+    <p id="loginStatus"></p>
 
-        <h2>公司資料設定</h2>
+    <button id="initBtn">初始化 Firebase 資料</button>
+    <button id="logoutBtn">登出</button>
 
-        <label>公司名稱</label>
-        <input id="companyName" type="text">
-
-        <label>聯絡電話</label>
-        <input id="phone" type="text" placeholder="手機或市話皆可">
-
-        <label>LINE 名稱</label>
-        <input id="lineID" type="text">
-
-        <label>Email</label>
-        <input id="emailContact" type="text">
-
-        <label>網站</label>
-        <input id="website" type="text">
-
-        <label>地址</label>
-        <input id="address" type="text">
-
-        <button id="saveCompanyBtn">儲存公司資料</button>
-        <button id="logoutBtn">登出</button>
-      </div>
-    </section>
-  </main>
+    <pre id="resultBox"></pre>
+  </div>
 
   <script type="module" src="資產/js/admin.js"></script>
 </body>
