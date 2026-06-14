@@ -1,12 +1,19 @@
-// Firebase 設定檔範本
-// 之後到 Firebase Console > Project settings > Web app 複製設定貼到這裡
-export const firebaseConfig = {
-  apiKey: "PASTE_YOUR_API_KEY",
-  authDomain: "PASTE_YOUR_PROJECT.firebaseapp.com",
-  projectId: "PASTE_YOUR_PROJECT_ID",
-  storageBucket: "PASTE_YOUR_PROJECT.appspot.com",
-  messagingSenderId: "PASTE_SENDER_ID",
-  appId: "PASTE_APP_ID"
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDhWhfzkInLNqLCjMUPjn1EcFoi-e8RNik",
+  authDomain: "chtech-v2.firebaseapp.com",
+  projectId: "chtech-v2",
+  storageBucket: "chtech-v2.firebasestorage.app",
+  messagingSenderId: "547489290028",
+  appId: "1:547489290028:web:3f8cd6c1356fd5c1fdfe89",
+  measurementId: "G-CNE6B4ELE1"
 };
 
-export const firebaseEnabled = false; // Firebase 建好後改 true
+export const app = initializeApp(firebaseConfig);
+
+export const db = getFirestore(app);
+
+export const firebaseEnabled = true;
