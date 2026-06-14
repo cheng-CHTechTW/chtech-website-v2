@@ -3,322 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CHTech Website CMS</title>
-
+<title>CHTech CMS Admin V4</title>
 <style>
 *{box-sizing:border-box}
-html,body{
-  margin:0;
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  font-family:"Microsoft JhengHei",Arial,sans-serif;
-  background:#f4f6fb;
-  color:#0f172a;
-}
+html,body{margin:0;width:100%;height:100%;font-family:"Microsoft JhengHei",Arial,sans-serif;background:#f4f6fb;color:#111827}
 button,input,textarea{font-family:inherit}
 button{border:0;cursor:pointer}
-input,textarea{
-  width:100%;
-  padding:12px 14px;
-  border:1px solid #dbe3ef;
-  border-radius:12px;
-  outline:none;
-  background:#fff;
-}
+input,textarea{width:100%;padding:12px 14px;border:1px solid #dbe3ef;border-radius:12px;background:#fff}
 
-/* Login */
-#loginBox{
-  width:420px;
-  max-width:calc(100% - 32px);
-  margin:90px auto;
-  background:#fff;
-  padding:34px;
-  border-radius:24px;
-  box-shadow:0 20px 60px rgba(15,23,42,.16);
-}
-#loginBox h1{margin:0 0 8px;font-size:28px}
+#loginBox{width:420px;max-width:calc(100% - 32px);margin:90px auto;background:#fff;padding:34px;border-radius:24px;box-shadow:0 20px 60px rgba(15,23,42,.16)}
+#loginBox h1{margin:0 0 8px}
 #loginBox p{margin:0 0 22px;color:#64748b}
 #email,#password{margin-bottom:14px}
-#loginBtn,.primary{
-  background:#1677ff;
-  color:#fff;
-  padding:12px 18px;
-  border-radius:12px;
-  font-weight:700;
-}
+#loginBtn,.primary{background:#1677ff;color:#fff;padding:12px 18px;border-radius:12px;font-weight:700}
 #loginBtn{width:100%}
 
-/* App */
-.app{
-  display:flex;
-  width:100vw;
-  height:100vh;
-  overflow:hidden;
-}
+#mobileMenuBtn{display:none}
 
-/* Sidebar */
-.sidebar{
-  width:236px;
-  min-width:236px;
-  height:100vh;
-  background:linear-gradient(180deg,#102033,#162b45);
-  color:#eaf2ff;
-  display:flex;
-  flex-direction:column;
-}
-.brand{
-  height:72px;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:0 18px;
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-.logo{
-  width:38px;height:38px;border-radius:12px;
-  background:#fff;
-  display:flex;align-items:center;justify-content:center;
-  color:#1677ff;font-weight:900;
-}
-.brand-title{font-weight:900;font-size:17px}
-.brand-sub{font-size:12px;color:#9fb4d1;margin-top:2px}
-.nav{
-  flex:1;
-  padding:14px 10px;
-  overflow-y:auto;
-}
-.nav-title{
-  font-size:12px;
-  color:#8fa6c8;
-  margin:18px 10px 8px;
-}
-.nav button{
-  width:100%;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:12px 14px;
-  margin:4px 0;
-  border-radius:12px;
-  color:#dbeafe;
-  background:transparent;
-  font-size:15px;
-  text-align:left;
-}
-.nav button:hover,.nav button.active{
-  background:#1677ff;
-  color:#fff;
-}
-.logout-area{
-  padding:14px 10px;
-  border-top:1px solid rgba(255,255,255,.08);
-}
-#logoutBtn{
-  width:100%;
-  background:rgba(255,255,255,.08);
-  color:#fff;
-  padding:12px 14px;
-  border-radius:12px;
-}
+.app{display:flex;width:100vw;height:100vh;overflow:hidden}
+.sidebar{width:250px;min-width:250px;background:#102033;color:#eaf2ff;display:flex;flex-direction:column}
+.brand{height:76px;display:flex;align-items:center;gap:12px;padding:0 18px;border-bottom:1px solid rgba(255,255,255,.08)}
+.logo{width:40px;height:40px;border-radius:12px;background:#fff;color:#1677ff;display:flex;align-items:center;justify-content:center;font-weight:900}
+.brand-title{font-size:17px;font-weight:900}
+.brand-sub{font-size:12px;color:#9fb4d1}
+.nav{flex:1;padding:14px 10px;overflow-y:auto}
+.nav-title{font-size:12px;color:#8fa6c8;margin:18px 10px 8px}
+.nav button{width:100%;display:flex;align-items:center;gap:12px;padding:12px 14px;margin:4px 0;border-radius:12px;background:transparent;color:#dbeafe;text-align:left;font-size:15px}
+.nav button:hover,.nav button.active{background:#1677ff;color:#fff}
+.logout-area{padding:14px 10px;border-top:1px solid rgba(255,255,255,.08)}
+#logoutBtn{width:100%;background:rgba(255,255,255,.08);color:#fff;padding:12px;border-radius:12px}
 
-/* Main */
-.main{
-  flex:1;
-  height:100vh;
-  overflow:auto;
-}
-.topbar{
-  height:68px;
-  background:rgba(255,255,255,.92);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid #e5eaf2;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 28px;
-  position:sticky;
-  top:0;
-  z-index:10;
-}
-.page-title{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-.menu-icon{
-  width:36px;height:36px;border-radius:10px;
-  background:#f1f5f9;
-  display:flex;align-items:center;justify-content:center;
-}
-.search{
-  width:min(480px,42vw);
-  background:#f1f5f9;
-  color:#94a3b8;
-  padding:12px 18px;
-  border-radius:14px;
-  text-align:left;
-}
-.top-actions{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-.badge{
-  width:36px;height:36px;border-radius:50%;
-  background:#f8fafc;
-  display:flex;align-items:center;justify-content:center;
-  border:1px solid #e5eaf2;
-}
-.user{
-  max-width:260px;
-  background:#f8fafc;
-  border:1px solid #e5eaf2;
-  padding:9px 14px;
-  border-radius:999px;
-  font-size:13px;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-}
+.main{flex:1;height:100vh;overflow:auto}
+.topbar{height:68px;background:#fff;border-bottom:1px solid #e5eaf2;display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:10}
+.search{width:min(460px,42vw);background:#f1f5f9;color:#94a3b8;padding:12px 18px;border-radius:14px}
+.top-actions{display:flex;align-items:center;gap:12px}
+.user{max-width:260px;background:#f8fafc;border:1px solid #e5eaf2;padding:9px 14px;border-radius:999px;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.badge{width:36px;height:36px;border-radius:50%;background:#f8fafc;border:1px solid #e5eaf2;display:flex;align-items:center;justify-content:center}
 
-/* Content */
-.content{
-  padding:28px;
-}
-.hero{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  margin-bottom:22px;
-}
+.content{padding:28px}
+.hero{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:22px}
 .hero h1{font-size:30px;margin:0 0 8px}
 .hero p{margin:0;color:#64748b}
-.quick{
-  background:#1677ff;
-  color:#fff;
-  padding:12px 18px;
-  border-radius:12px;
-  font-weight:700;
-}
-.kpi-grid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(160px,1fr));
-  gap:16px;
-  margin-bottom:18px;
-}
-.kpi{
-  background:#fff;
-  border:1px solid #e5eaf2;
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 10px 30px rgba(15,23,42,.05);
-}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:16px;margin-bottom:18px}
+.kpi{background:#fff;border:1px solid #e5eaf2;border-radius:20px;padding:20px;box-shadow:0 10px 30px rgba(15,23,42,.05)}
 .kpi small{color:#64748b}
 .kpi b{display:block;font-size:28px;margin:8px 0}
 .kpi span{color:#16a34a;font-size:13px}
-.layout-grid{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 340px;
-  gap:18px;
-}
-.card{
-  background:#fff;
-  border:1px solid #e5eaf2;
-  border-radius:22px;
-  padding:22px;
-  box-shadow:0 10px 30px rgba(15,23,42,.05);
-}
-.card h2{margin:0 0 18px;font-size:20px}
-.app-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-  gap:18px;
-}
-.app-item{
-  padding:16px 10px;
-  border-radius:18px;
-  text-align:center;
-  background:#f8fafc;
-}
-.app-icon{
-  width:52px;height:52px;border-radius:16px;
-  margin:0 auto 10px;
-  display:flex;align-items:center;justify-content:center;
-  background:#e0f2fe;
-  font-size:24px;
-}
-.right-col{
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
-.notice{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  padding:12px 0;
-  border-bottom:1px solid #eef2f7;
-}
-.notice:last-child{border-bottom:0}
+.layout-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px}
+.card{background:#fff;border:1px solid #e5eaf2;border-radius:22px;padding:22px;box-shadow:0 10px 30px rgba(15,23,42,.05)}
+.card h2{margin:0 0 18px}
+.app-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:18px}
+.app-item{padding:16px 10px;border-radius:18px;text-align:center;background:#f8fafc}
+.app-icon{width:52px;height:52px;border-radius:16px;margin:0 auto 10px;background:#e0f2fe;display:flex;align-items:center;justify-content:center;font-size:24px}
+.right-col{display:flex;flex-direction:column;gap:18px}
+.notice,.status-row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #eef2f7}
+.notice:last-child,.status-row:last-child{border-bottom:0}
 .notice small{color:#64748b}
-.status-row{
-  display:flex;
-  justify-content:space-between;
-  padding:12px 0;
-  border-bottom:1px solid #eef2f7;
-}
-.ok{
-  background:#dcfce7;
-  color:#15803d;
-  padding:4px 10px;
-  border-radius:999px;
-  font-size:12px;
-}
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
+.ok{background:#dcfce7;color:#15803d;padding:4px 10px;border-radius:999px;font-size:12px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .full{grid-column:1/-1}
-#resultBox{
-  background:#0f172a;
-  color:#bbf7d0;
-  border-radius:14px;
-  padding:14px;
-  margin-top:18px;
-  white-space:pre-wrap;
-}
+#resultBox{background:#0f172a;color:#bbf7d0;border-radius:14px;padding:14px;margin-top:18px;white-space:pre-wrap}
 
-/* Pages */
-#companyPage,#servicesPage,#formsPage{
-  display:none;
-}
+#companyPage,#servicesPage,#formsPage{display:none}
 
-/* Responsive */
+.overlay{display:none}
+
 @media(max-width:1180px){
   .kpi-grid{grid-template-columns:repeat(2,1fr)}
   .layout-grid{grid-template-columns:1fr}
 }
 @media(max-width:760px){
-  html,body{overflow:auto}
-  .app{flex-direction:column;height:auto;overflow:auto}
-  .sidebar{width:100%;min-width:100%;height:auto}
-  .brand{height:auto;padding:16px}
-  .nav{display:grid;grid-template-columns:repeat(2,1fr)}
-  .nav-title{grid-column:1/-1}
-  .main{height:auto}
-  .topbar{height:auto;flex-wrap:wrap;gap:12px;padding:14px}
-  .search{width:100%}
+  html,body{height:auto;overflow:auto}
+  #mobileMenuBtn{display:flex;position:fixed;left:14px;top:14px;z-index:1001;width:44px;height:44px;border-radius:12px;background:#1677ff;color:#fff;align-items:center;justify-content:center;font-size:22px}
+  .app{height:auto;min-height:100vh;overflow:auto}
+  .sidebar{position:fixed;left:-270px;top:0;width:250px;height:100vh;z-index:1000;transition:.25s ease}
+  .sidebar.open{left:0}
+  .overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:999}
+  .overlay.show{display:block}
+  .main{width:100%;height:auto}
+  .topbar{height:auto;min-height:70px;padding:14px 14px 14px 68px;flex-wrap:wrap;gap:10px}
+  .search{width:100%;order:3}
+  .user{max-width:180px}
   .content{padding:16px}
-  .hero{flex-direction:column;gap:12px}
-  .kpi-grid{grid-template-columns:1fr}
-  .form-grid{grid-template-columns:1fr}
+  .hero{flex-direction:column}
+  .kpi-grid,.form-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
+
+<button id="mobileMenuBtn">☰</button>
+<div id="overlay" class="overlay"></div>
 
 <div id="loginBox">
   <h1>誠創科技網站後台</h1>
@@ -330,7 +106,7 @@ input,textarea{
 
 <div id="panelBox" class="app" style="display:none">
 
-  <aside class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="brand">
       <div class="logo">CH</div>
       <div>
@@ -347,10 +123,10 @@ input,textarea{
       <button data-tab="forms">📝 表單設定</button>
 
       <div class="nav-title">待開發模組</div>
-      <button>📸 案例展示</button>
-      <button>❓ FAQ 管理</button>
-      <button>🖼 首頁輪播</button>
-      <button>🔍 SEO 設定</button>
+      <button type="button">📸 案例展示</button>
+      <button type="button">❓ FAQ 管理</button>
+      <button type="button">🖼 首頁輪播</button>
+      <button type="button">🔍 SEO 設定</button>
     </div>
 
     <div class="logout-area">
@@ -360,13 +136,8 @@ input,textarea{
 
   <main class="main">
     <div class="topbar">
-      <div class="page-title">
-        <div class="menu-icon">☰</div>
-        <strong>形象網站管理</strong>
-      </div>
-
-      <div class="search">🔍 搜尋功能或頁面...（Ctrl + Shift + F）</div>
-
+      <strong>形象網站管理</strong>
+      <div class="search">🔍 搜尋功能或頁面...</div>
       <div class="top-actions">
         <div class="badge">🔔</div>
         <div class="badge">✉️</div>
@@ -380,9 +151,9 @@ input,textarea{
         <div class="hero">
           <div>
             <h1>儀表板</h1>
-            <p>歡迎回來，這裡是誠創科技形象網站 CMS 狀態總覽。</p>
+            <p>誠創科技形象網站 CMS 狀態總覽。</p>
           </div>
-          <button class="quick">快速操作 ▾</button>
+          <button class="primary">快速操作</button>
         </div>
 
         <div class="kpi-grid">
@@ -410,8 +181,8 @@ input,textarea{
           <div class="right-col">
             <div class="card">
               <h2>最新通知</h2>
-              <div class="notice"><span>網站 CMS 已部署</span><small>剛剛</small></div>
-              <div class="notice"><span>Firebase 資料已建立</span><small>已完成</small></div>
+              <div class="notice"><span>網站 CMS 已部署</span><small>完成</small></div>
+              <div class="notice"><span>Firebase 資料已建立</span><small>完成</small></div>
               <div class="notice"><span>案例與 FAQ 待開發</span><small>待處理</small></div>
             </div>
 
@@ -457,11 +228,35 @@ input,textarea{
       </section>
 
       <pre id="resultBox"></pre>
-
     </div>
   </main>
 </div>
 
 <script type="module" src="./assets/js/admin.js"></script>
+
+<script>
+const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
+
+function openMenu(){
+  sidebar.classList.add("open");
+  overlay.classList.add("show");
+}
+function closeMenu(){
+  sidebar.classList.remove("open");
+  overlay.classList.remove("show");
+}
+
+mobileMenuBtn.addEventListener("click", openMenu);
+overlay.addEventListener("click", closeMenu);
+
+document.querySelectorAll(".nav button").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    if(window.innerWidth <= 760) closeMenu();
+  });
+});
+</script>
+
 </body>
 </html>
