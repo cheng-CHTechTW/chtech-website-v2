@@ -1,1 +1,51 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>誠創科技 V2 後台</title><link rel="stylesheet" href="assets/css/admin.css"></head><body><aside><h2>CHTech Admin</h2><button data-panel="company">公司資料</button><button data-panel="banners">輪播圖片</button><button data-panel="services">服務項目</button><button data-panel="cases">客戶案例</button><button data-panel="news">最新消息</button><button data-panel="faq">FAQ</button><button data-panel="forms">表單紀錄</button><button data-panel="users">權限管理</button></aside><main><section class="login"><h1>Firebase 後台登入</h1><p>正式串接後，帳號由 Firebase Authentication 管理，不再寫死在前端。</p><input id="email" placeholder="Email"><input id="password" placeholder="Password" type="password"><button id="loginBtn">登入測試</button><p id="loginStatus"></p></section><section class="panel"><h2 id="panelTitle">公司資料</h2><div id="panelContent">目前為 V2 測試外殼，接上 Firebase 後即可讀寫雲端資料。</div></section></main><script type="module" src="assets/js/admin.js"></script></body></html>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <title>CHTech 管理中心 V2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="資產/css/admin.css">
+</head>
+<body>
+  <main id="adminApp">
+    <section class="admin-card">
+      <h1>誠創科技管理中心 V2</h1>
+
+      <div id="loginBox">
+        <input id="email" type="email" placeholder="管理員 Email">
+        <input id="password" type="password" placeholder="密碼">
+        <button id="loginBtn">登入</button>
+      </div>
+
+      <div id="panelBox" style="display:none;">
+        <p id="loginStatus"></p>
+
+        <h2>公司資料設定</h2>
+
+        <label>公司名稱</label>
+        <input id="companyName" type="text">
+
+        <label>聯絡電話</label>
+        <input id="phone" type="text" placeholder="手機或市話皆可">
+
+        <label>LINE 名稱</label>
+        <input id="lineID" type="text">
+
+        <label>Email</label>
+        <input id="emailContact" type="text">
+
+        <label>網站</label>
+        <input id="website" type="text">
+
+        <label>地址</label>
+        <input id="address" type="text">
+
+        <button id="saveCompanyBtn">儲存公司資料</button>
+        <button id="logoutBtn">登出</button>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="資產/js/admin.js"></script>
+</body>
+</html>
