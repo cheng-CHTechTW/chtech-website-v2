@@ -3,56 +3,321 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>誠創科技網站管理後台</title>
+<title>CHTech Website CMS</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:"Microsoft JhengHei",Arial,sans-serif;background:#f3f5f9;color:#1f2937}
-button{border:0;cursor:pointer;font-family:inherit}
-input,textarea{width:100%;padding:12px;border:1px solid #dbe1ea;border-radius:10px;margin:8px 0 14px}
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  font-family:"Microsoft JhengHei",Arial,sans-serif;
+  background:#f4f6fb;
+  color:#0f172a;
+}
+button,input,textarea{font-family:inherit}
+button{border:0;cursor:pointer}
+input,textarea{
+  width:100%;
+  padding:12px 14px;
+  border:1px solid #dbe3ef;
+  border-radius:12px;
+  outline:none;
+  background:#fff;
+}
 
-#loginBox{max-width:420px;margin:90px auto;background:#fff;padding:32px;border-radius:22px;box-shadow:0 18px 45px rgba(20,30,60,.15)}
-#loginBox h1{margin:0 0 8px}
-#loginBtn,.primary{background:#2f80ed;color:#fff;border-radius:10px;padding:11px 18px;font-weight:700}
+/* Login */
+#loginBox{
+  width:420px;
+  max-width:calc(100% - 32px);
+  margin:90px auto;
+  background:#fff;
+  padding:34px;
+  border-radius:24px;
+  box-shadow:0 20px 60px rgba(15,23,42,.16);
+}
+#loginBox h1{margin:0 0 8px;font-size:28px}
+#loginBox p{margin:0 0 22px;color:#64748b}
+#email,#password{margin-bottom:14px}
+#loginBtn,.primary{
+  background:#1677ff;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:700;
+}
 #loginBtn{width:100%}
 
-.app{display:flex;min-height:100vh}
-.sidebar{width:220px;background:#7890b5;color:#fff;padding:18px 14px}
-.brand{font-size:18px;font-weight:800;margin:10px 0 28px}
-.nav button{display:flex;align-items:center;width:100%;gap:10px;background:transparent;color:#fff;padding:13px;border-radius:12px;text-align:left;font-size:15px}
-.nav button:hover,.nav button.active{background:rgba(255,255,255,.22)}
-.nav hr{border:0;border-top:1px solid rgba(255,255,255,.22);margin:18px 0}
+/* App */
+.app{
+  display:flex;
+  width:100vw;
+  height:100vh;
+  overflow:hidden;
+}
 
-.main{flex:1;padding:0}
-.topbar{height:58px;background:#eef1f7;display:flex;align-items:center;justify-content:center;position:relative}
-.search{width:420px;background:#dce3ef;border-radius:12px;padding:10px;text-align:center;color:#6b7280}
-.user{position:absolute;right:24px;background:#fff;padding:9px 14px;border-radius:999px;font-size:13px}
+/* Sidebar */
+.sidebar{
+  width:236px;
+  min-width:236px;
+  height:100vh;
+  background:linear-gradient(180deg,#102033,#162b45);
+  color:#eaf2ff;
+  display:flex;
+  flex-direction:column;
+}
+.brand{
+  height:72px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 18px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.logo{
+  width:38px;height:38px;border-radius:12px;
+  background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  color:#1677ff;font-weight:900;
+}
+.brand-title{font-weight:900;font-size:17px}
+.brand-sub{font-size:12px;color:#9fb4d1;margin-top:2px}
+.nav{
+  flex:1;
+  padding:14px 10px;
+  overflow-y:auto;
+}
+.nav-title{
+  font-size:12px;
+  color:#8fa6c8;
+  margin:18px 10px 8px;
+}
+.nav button{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 14px;
+  margin:4px 0;
+  border-radius:12px;
+  color:#dbeafe;
+  background:transparent;
+  font-size:15px;
+  text-align:left;
+}
+.nav button:hover,.nav button.active{
+  background:#1677ff;
+  color:#fff;
+}
+.logout-area{
+  padding:14px 10px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+#logoutBtn{
+  width:100%;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  padding:12px 14px;
+  border-radius:12px;
+}
 
-.content{display:grid;grid-template-columns:1fr 360px;gap:22px;padding:28px 34px}
-.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 10px 25px rgba(30,41,59,.06)}
-.card h2{margin:0 0 18px}
+/* Main */
+.main{
+  flex:1;
+  height:100vh;
+  overflow:auto;
+}
+.topbar{
+  height:68px;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #e5eaf2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 28px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.page-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.menu-icon{
+  width:36px;height:36px;border-radius:10px;
+  background:#f1f5f9;
+  display:flex;align-items:center;justify-content:center;
+}
+.search{
+  width:min(480px,42vw);
+  background:#f1f5f9;
+  color:#94a3b8;
+  padding:12px 18px;
+  border-radius:14px;
+  text-align:left;
+}
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.badge{
+  width:36px;height:36px;border-radius:50%;
+  background:#f8fafc;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid #e5eaf2;
+}
+.user{
+  max-width:260px;
+  background:#f8fafc;
+  border:1px solid #e5eaf2;
+  padding:9px 14px;
+  border-radius:999px;
+  font-size:13px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
 
-.tabs span{display:inline-block;background:#eef2f7;padding:9px 14px;border-radius:8px;margin-right:8px;font-weight:700}
-.workgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:24px}
-.appitem{text-align:center;padding:14px;border-radius:16px}
-.icon{width:48px;height:48px;border-radius:14px;background:#e0f2fe;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:24px}
-.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.stat{background:#f8fafc;border-radius:16px;padding:18px}
-.stat b{font-size:28px}
-.rightcol{display:flex;flex-direction:column;gap:18px}
-.banner{background:linear-gradient(135deg,#1687f3,#0ea5e9);color:#fff;border-radius:18px;padding:22px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+/* Content */
+.content{
+  padding:28px;
+}
+.hero{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:22px;
+}
+.hero h1{font-size:30px;margin:0 0 8px}
+.hero p{margin:0;color:#64748b}
+.quick{
+  background:#1677ff;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:700;
+}
+.kpi-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(160px,1fr));
+  gap:16px;
+  margin-bottom:18px;
+}
+.kpi{
+  background:#fff;
+  border:1px solid #e5eaf2;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 10px 30px rgba(15,23,42,.05);
+}
+.kpi small{color:#64748b}
+.kpi b{display:block;font-size:28px;margin:8px 0}
+.kpi span{color:#16a34a;font-size:13px}
+.layout-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 340px;
+  gap:18px;
+}
+.card{
+  background:#fff;
+  border:1px solid #e5eaf2;
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 10px 30px rgba(15,23,42,.05);
+}
+.card h2{margin:0 0 18px;font-size:20px}
+.app-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:18px;
+}
+.app-item{
+  padding:16px 10px;
+  border-radius:18px;
+  text-align:center;
+  background:#f8fafc;
+}
+.app-icon{
+  width:52px;height:52px;border-radius:16px;
+  margin:0 auto 10px;
+  display:flex;align-items:center;justify-content:center;
+  background:#e0f2fe;
+  font-size:24px;
+}
+.right-col{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.notice{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid #eef2f7;
+}
+.notice:last-child{border-bottom:0}
+.notice small{color:#64748b}
+.status-row{
+  display:flex;
+  justify-content:space-between;
+  padding:12px 0;
+  border-bottom:1px solid #eef2f7;
+}
+.ok{
+  background:#dcfce7;
+  color:#15803d;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+}
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
 .full{grid-column:1/-1}
-#resultBox{background:#0f172a;color:#bbf7d0;border-radius:14px;padding:14px;white-space:pre-wrap}
+#resultBox{
+  background:#0f172a;
+  color:#bbf7d0;
+  border-radius:14px;
+  padding:14px;
+  margin-top:18px;
+  white-space:pre-wrap;
+}
 
-@media(max-width:900px){
-.app{flex-direction:column}
-.sidebar{width:100%}
-.content{grid-template-columns:1fr;padding:16px}
-.workgrid,.statgrid,.form-grid{grid-template-columns:1fr}
-.search{width:70%}
+/* Pages */
+#companyPage,#servicesPage,#formsPage{
+  display:none;
+}
+
+/* Responsive */
+@media(max-width:1180px){
+  .kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .layout-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  html,body{overflow:auto}
+  .app{flex-direction:column;height:auto;overflow:auto}
+  .sidebar{width:100%;min-width:100%;height:auto}
+  .brand{height:auto;padding:16px}
+  .nav{display:grid;grid-template-columns:repeat(2,1fr)}
+  .nav-title{grid-column:1/-1}
+  .main{height:auto}
+  .topbar{height:auto;flex-wrap:wrap;gap:12px;padding:14px}
+  .search{width:100%}
+  .content{padding:16px}
+  .hero{flex-direction:column;gap:12px}
+  .kpi-grid{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
+
 <body>
 
 <div id="loginBox">
@@ -64,60 +329,104 @@ input,textarea{width:100%;padding:12px;border:1px solid #dbe1ea;border-radius:10
 </div>
 
 <div id="panelBox" class="app" style="display:none">
+
   <aside class="sidebar">
-    <div class="brand">🤖 誠創科技設計</div>
+    <div class="brand">
+      <div class="logo">CH</div>
+      <div>
+        <div class="brand-title">誠創科技工作室</div>
+        <div class="brand-sub">CHTech Studio</div>
+      </div>
+    </div>
+
     <div class="nav">
+      <div class="nav-title">網站內容</div>
       <button data-tab="dashboard" class="active">🏠 儀表板</button>
       <button data-tab="company">🏢 公司資料</button>
-      <button data-tab="services">🛠 服務管理</button>
+      <button data-tab="services">🛠 服務項目</button>
       <button data-tab="forms">📝 表單設定</button>
-      <hr>
+
+      <div class="nav-title">待開發模組</div>
       <button>📸 案例展示</button>
-      <button>❓ FAQ管理</button>
+      <button>❓ FAQ 管理</button>
       <button>🖼 首頁輪播</button>
-      <button>🔍 SEO設定</button>
-      <hr>
+      <button>🔍 SEO 設定</button>
+    </div>
+
+    <div class="logout-area">
       <button id="logoutBtn">🚪 登出</button>
     </div>
   </aside>
 
   <main class="main">
     <div class="topbar">
-      <div class="search">搜尋功能或頁面 Ctrl + Shift + F</div>
-      <div id="loginStatus" class="user"></div>
+      <div class="page-title">
+        <div class="menu-icon">☰</div>
+        <strong>形象網站管理</strong>
+      </div>
+
+      <div class="search">🔍 搜尋功能或頁面...（Ctrl + Shift + F）</div>
+
+      <div class="top-actions">
+        <div class="badge">🔔</div>
+        <div class="badge">✉️</div>
+        <div id="loginStatus" class="user"></div>
+      </div>
     </div>
 
     <div class="content">
-      <div>
-        <section id="dashboardPage">
+
+      <section id="dashboardPage">
+        <div class="hero">
+          <div>
+            <h1>儀表板</h1>
+            <p>歡迎回來，這裡是誠創科技形象網站 CMS 狀態總覽。</p>
+          </div>
+          <button class="quick">快速操作 ▾</button>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi"><small>網站狀態</small><b>正常</b><span>Firebase Connected</span></div>
+          <div class="kpi"><small>服務項目</small><b>4</b><span>待串接管理</span></div>
+          <div class="kpi"><small>案例展示</small><b>0</b><span>待建立</span></div>
+          <div class="kpi"><small>聯絡表單</small><b>Active</b><span>formsConfig 已建立</span></div>
+        </div>
+
+        <div class="layout-grid">
           <div class="card">
             <h2>全部應用程式</h2>
-            <div class="tabs">
-              <span>常用功能</span><span>網站內容</span><span>待完成設定</span>
-            </div>
-            <div class="workgrid">
-              <div class="appitem"><div class="icon">🏢</div>公司資料</div>
-              <div class="appitem"><div class="icon">🛠</div>服務項目</div>
-              <div class="appitem"><div class="icon">📸</div>案例展示</div>
-              <div class="appitem"><div class="icon">📝</div>聯絡表單</div>
-              <div class="appitem"><div class="icon">❓</div>FAQ</div>
-              <div class="appitem"><div class="icon">🖼</div>首頁輪播</div>
-              <div class="appitem"><div class="icon">🔍</div>SEO設定</div>
-              <div class="appitem"><div class="icon">⚙️</div>網站設定</div>
+            <div class="app-grid">
+              <div class="app-item"><div class="app-icon">🏢</div>公司資料</div>
+              <div class="app-item"><div class="app-icon">🛠</div>服務項目</div>
+              <div class="app-item"><div class="app-icon">📸</div>案例展示</div>
+              <div class="app-item"><div class="app-icon">📝</div>聯絡表單</div>
+              <div class="app-item"><div class="app-icon">❓</div>FAQ</div>
+              <div class="app-item"><div class="app-icon">🖼</div>首頁輪播</div>
+              <div class="app-item"><div class="app-icon">🔍</div>SEO設定</div>
+              <div class="app-item"><div class="app-icon">⚙️</div>網站設定</div>
             </div>
           </div>
 
-          <div class="card" style="margin-top:18px">
-            <h2>網站狀態</h2>
-            <div class="statgrid">
-              <div class="stat">Firebase<br><b>Connected</b></div>
-              <div class="stat">Website<br><b>V2</b></div>
-              <div class="stat">Status<br><b>Active</b></div>
+          <div class="right-col">
+            <div class="card">
+              <h2>最新通知</h2>
+              <div class="notice"><span>網站 CMS 已部署</span><small>剛剛</small></div>
+              <div class="notice"><span>Firebase 資料已建立</span><small>已完成</small></div>
+              <div class="notice"><span>案例與 FAQ 待開發</span><small>待處理</small></div>
+            </div>
+
+            <div class="card">
+              <h2>系統狀態</h2>
+              <div class="status-row"><span>Firebase 資料庫</span><span class="ok">正常</span></div>
+              <div class="status-row"><span>GitHub Pages</span><span class="ok">正常</span></div>
+              <div class="status-row"><span>自訂網域</span><span class="ok">正常</span></div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section id="companyPage" class="card" style="display:none">
+      <section id="companyPage">
+        <div class="card">
           <h2>公司資料</h2>
           <div class="form-grid">
             <input id="companyName" placeholder="公司名稱">
@@ -129,37 +438,26 @@ input,textarea{width:100%;padding:12px;border:1px solid #dbe1ea;border-radius:10
             <textarea id="description" class="full" rows="5" placeholder="公司簡介"></textarea>
           </div>
           <button id="saveCompanyBtn" class="primary">儲存公司資料</button>
-        </section>
+        </div>
+      </section>
 
-        <section id="servicesPage" class="card" style="display:none">
+      <section id="servicesPage">
+        <div class="card">
           <h2>服務管理</h2>
           <button id="loadServicesBtn" class="primary">讀取服務</button>
           <div id="servicesList"></div>
-        </section>
+        </div>
+      </section>
 
-        <section id="formsPage" class="card" style="display:none">
+      <section id="formsPage">
+        <div class="card">
           <h2>表單設定</h2>
           <p>欄位：聯絡人、電話、店名、營業地區、LINE名稱、需求、聯繫時間、備註。</p>
-        </section>
+        </div>
+      </section>
 
-        <pre id="resultBox"></pre>
-      </div>
+      <pre id="resultBox"></pre>
 
-      <div class="rightcol">
-        <div class="banner">
-          <h3>CHTech Website V2</h3>
-          <p>形象網站 CMS 管理中心</p>
-        </div>
-        <div class="card">
-          <h2>公告</h2>
-          <p>目前為測試版，資料已連接 Firebase。</p>
-          <button class="primary">管理</button>
-        </div>
-        <div class="card">
-          <h2>待辦</h2>
-          <p>首頁資料同步、案例管理、FAQ 管理待完成。</p>
-        </div>
-      </div>
     </div>
   </main>
 </div>
